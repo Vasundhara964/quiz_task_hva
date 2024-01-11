@@ -5,20 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Dashboard</title>
-    <link rel="stylesheet" href="rough.css">
+    <link rel="stylesheet" href="interface.css">
+    <script src="interface.js"></script>
 </head>
 
 <body>
-
-    <header>
-        <h1 class="heading">Quiz Dashboard</h1>
+    <header>  
+        <h1 class="heading">Quiz</h1>
+        <div id="name_of_user"></div>
+        <li class="user-info">
+            <a href="#" class="dropdown-btn"><img src="login-photo.png" alt="User Photo" width="50" height="50"></a>
+            <ul class="dropdown-content">
+                <li><a href="#">Log out</a></li>
+            </ul>
+        </li>
     </header>
 
-    <div class="user-info">
-        <h2>Prasad</h2>
-        <img src="login-photo.png" alt="User Photo" width="50" height="50">
-        <div class="logout">Log out</div>
-    </div>
     <div class="nav-container">
         <nav>
             <a href="#">Home</a>
@@ -27,42 +29,45 @@
             <a href="#">Settings</a>
         </nav>
     </div>
-    <h1>Dashboard</h1>
+
     <div class="dashboard">
-        <section>
-            <h2>Number of Quizzes Taken</h2>
-            <p>5</p>
-        </section>
-        <section>
-            <h2>Total Score</h2>
-            <p>50</p>
-        </section>
-        <section>
-            <h2>Highest Score</h2>
-            <p>80</p>
-        </section>
-        <section>
-            <h2>Average Score</h2>
-            <p>55</p>
-        </section>
-    </div>
-
-    <h1>Quiz</h1>
-    <div class="quizzes">
-        <div class="quiz">
-            <h1>GK</h1>
-            <p>Start -></p>
-        </div>
-        <div class="quiz">
-            <h1>English</h1>
-            <p>Start -></p>
-        </div>
-        <div class="quiz">
-            <h1>Python</h1>
-            <p>Start -></p>
+        <h1>Dashboard</h1>
+        <div class="dashboard_sections">
+            <section>
+                <h2>Number of Quizzes Taken</h2>
+                <p>5</p>
+            </section>
+            <section>
+                <h2>Total Score</h2>
+                <p>50</p>
+            </section>
+            <section>
+                <h2>Highest Score</h2>
+                <p>80</p>
+            </section>
+            <section>
+                <h2>Average Score</h2>
+                <p>55</p>
+            </section>
         </div>
     </div>
-
+    <div class="quiz_section">
+        <h1>Quizzes</h1>
+        <div class="quizzes">
+            <div class="quiz">
+                <h1>GK</h1>
+                <p>Start -></p>
+            </div>
+            <div class="quiz">
+                <h1>English</h1>
+                <p>Start -></p>
+            </div>
+            <div class="quiz">
+                <h1>Python</h1>
+                <p>Start -></p>
+            </div>
+        </div>
+    </div>
     <div class="add-quiz">
         <h1>Add Quiz</h1>
     </div>

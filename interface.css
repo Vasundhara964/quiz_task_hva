@@ -1,0 +1,230 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dbe0fa;
+    color: #344173;
+    transition: background-color 0.5s;
+}
+
+header {
+    display: flex;
+    background-color: #6c38de;
+    justify-content: center;
+    color: rgb(255, 253, 253);
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heading{
+    font-weight: 700;
+}
+
+#name_of_user{
+    position: absolute;
+    top:6%;
+    right:100px;
+    font-weight: 700;
+    font-size: large;
+}
+
+@media screen and (max-width: 800px) {
+    #name_of_user{
+        display: none;;
+    }
+}
+
+
+
+.user-info {
+    position: absolute;
+    top:0;
+    right:0;
+    padding: 2%;
+    list-style: none;
+}
+
+.user-info h2 {
+    margin: 0;
+    color: #fff;
+    margin-right: 10px;
+    
+}
+
+.user-info img {
+    border-radius: 50%;
+    margin-left: 1em;
+    /* border: 2px solid #fff; */
+}
+
+.logout {
+    cursor: pointer;
+    color: #3498db;
+    text-decoration: underline;
+}
+
+.dashboard_sections {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9ff;
+    border-radius: 8px;
+    margin: 20px;
+}
+h1{
+    margin: 1.5%;
+}
+.dashboard section {
+    flex: 1;
+    padding: 1.5em;
+    text-align: center;
+}
+
+.dashboard h2 {
+    color: #476686;
+}
+
+.dashboard p {
+    font-size: large;
+    color: #32035a;
+}
+
+.quizzes {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+    background-color: #f8f9ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.quiz {
+    text-align: center;
+    padding: 1.5em;
+    background-color: #6c38de;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    min-width: 150px;
+
+}
+
+.quiz:hover {
+    background-color: #8d64e8;
+}
+
+.add-quiz {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2em;
+    background-color: #6c38de;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 250px;
+}
+
+.add-quiz:hover {
+    background-color: #8d64e8;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+nav {
+    background-color: #6c38de;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(251, 250, 250, 0.1);
+    border-radius: 8px;
+}
+
+nav a {
+    color: rgb(250, 250, 252);
+    margin: 0 1em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ccb5ff;
+}
+
+.notifications {
+    background-color: #6c38de;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+    animation: colorChange 1s infinite alternate;
+}
+
+@keyframes colorChange {
+    from {
+        background-color: #6c38de;
+    }
+
+    to {
+        background-color: #7e55d7;
+    }
+}
+
+.user-info a.dropdown-btn {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+
+  }
+
+  .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+  }
+
+  .user-info .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dbe0fa;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5%;
+  }
+
+
+  .user-info .dropdown-content li {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .user-info .dropdown-content a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .user-info .dropdown-content li:hover {
+    background-color: #cec7ed;
+    border-radius: 5%;
+  }
+
+  .user-info:hover .dropdown-content {
+    display: block;}

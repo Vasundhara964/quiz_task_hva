@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login in</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+</head>
+
+<body>
+    <form action="./interface.html" onsubmit="return validateForm()">
+        <div class="login_text">Quiz</div>
+        <div class="log_txt">Login</div>
+        <div class="personal_info">
+            <div class="username">Username <br><input type="text" id="username" required></div>
+            <div class="email">E-mail <br><input type="email" id="email" required></div>
+            <div class="password">Password <br><input type="password" id="password" required></div>
+            <div class="confirm-password">Confirm Password <br><input type="password" id="confirmPassword" required></div>
+            <button class="button" type="submit" onclick="saveUsername()">Login</button>
+        </div>
+        <div id="errorMessages" class="error-messages"></div>
+        <div id="successMessage" class="success-message"></div>
+    </form>
+</body>
+</html>

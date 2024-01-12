@@ -125,7 +125,7 @@ function startQuiz(category) {
         quizListElement.appendChild(button);
     });
 }
-function performQuiz(quiz) {
+/*function performQuiz(quiz) {
     document.getElementById("homePage").style.display = "none";
     document.getElementById("startQuizPage").style.display = "none";
     document.getElementById("createQuizPage").style.display = "none";
@@ -142,7 +142,7 @@ function performQuiz(quiz) {
             <label><input type="radio" name="q${i + 1}" value="${quiz.questions[i].options[3]}"> ${quiz.questions[i].options[3]}</label><br>`;
         quizQuestionsElement.appendChild(questionDiv);
     }
-}
+}*/
 
 function submitAnswers() {
     const quizQuestions = document.querySelectorAll('[name^="q"]');

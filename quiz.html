@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz.css">
+    <title>Quiz App</title>
+</head>
+<body>
+    <div id="app">
+        <div id="homePage">
+            <h1>Quiz App</h1>
+            <button onclick="loadStartQuizPage()">Start Quiz</button>
+            <button onclick="loadCreateQuizPage()">Create Quiz</button>
+            <div id="quizList"></div>
+        </div>
+        <div id="startQuizPage" style="display: none;">
+            <button onclick="loadHomePage()">Back</button>
+            <h2>Select a Quiz:</h2>
+            <div id="quizCategories"></div>
+        </div>
+        <div id="createQuizPage" style="display: none;">
+            <button onclick="loadHomePage()">Back</button>
+            <h2>Create Quiz:</h2>
+            <input type="text" id="quizCategory" placeholder="Quiz Category">
+            <input type="number" id="numQuestionsInput" placeholder="Number of Questions">
+            <div id="questionsContainer"></div>
+            <button onclick="addQuestion()">Add Question</button>
+            <button onclick="saveQuiz()">Save Quiz</button>
+        </div>
+<div id="performQuizPage" style="display: none;">
+    <h2>Perform Quiz</h2>
+    <div id="quizQuestions"></div>
+    <button onclick="submitAnswers()">Submit Answers</button>
+    <p id="quizResult"></p>
+</div>
+
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

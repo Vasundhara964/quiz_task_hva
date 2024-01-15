@@ -57,10 +57,23 @@ header {
     /* border: 2px solid #fff; */
 }
 
-.logout {
+.dropdown-content li{
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
-    color: #3498db;
-    text-decoration: underline;
+    padding: 0%;
+    margin: 0;
+}
+.dropdown-content li a{
+    font-size: 15px;
+    font-weight: 600;
+    color: #485aa6;
+}
+.dropdown-content li img{
+    width: 20%;
+    height: 10%;
+    padding-left: 10%;
+    margin: 0;
 }
 
 .dashboard_sections {

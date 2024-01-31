@@ -21,4 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             quizzesContainer.appendChild(quizDiv);
         });
     }
-    
+   
+function navigateToNewPage() {
+// Change the URL to the desired page
+window.location.href = 'quiz.html';
+} 

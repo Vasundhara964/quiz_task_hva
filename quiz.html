@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>        
+    <meta charset="UTF-8">        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <title>Quiz</title>        
+    <link rel="stylesheet" href="quiz.css">        
+</head>
+<body>
+    <header>
+        <h1 class="heading">GK Quiz</h1>
+    </header>
+    <div class="select">
+        <h1>Select Options</h1>
+        <div class="boxes">
+            <div class="box" onclick="nextpage()">
+                Take Quiz
+            </div>
+            <div class="box" onclick="nextpage1()">
+                Add Questions
+            </div>
+        </div>
+    </div>
+    <script>
+        function nextpage() {
+            window.location.href = 'takequiz.html';
+        }
+        function nextpage1() {
+            window.location.href = 'sample.html';
+        }
+    </script>
+</body>
+</html>

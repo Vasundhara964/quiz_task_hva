@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Form</title>
+  <link rel="stylesheet" href="sample.css">
+</head>
+<body>
+  <header>
+    <h1 class="heading" onclick="nextpage2()">GK Quiz</h1>
+</header>
+  <div id="question-form">
+    <h2>Question Form</h2>
+    <div id="questions-container">
+    </div>
+
+    <button class="btn-add" onclick="addQuestion()">Add Question</button>
+    <button class="btn-submit" onclick="submitQuestions()">Submit</button>
+
+    <div class="added-questions">
+      <h3>Added Questions:</h3>
+      <ul id="added-questions-list">
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function nextpage2() {
+            window.location.href = 'quiz.html';
+        }
+    let questionCount = 1;
+    let questionArray = [];
+    let optionsArray = [];
+    let correctAnswerArray = [];
+    let quizData = [
+        {
+          question: "What is the capital of France?",
+          options: ["Berlin", "Madrid", "Paris", "Rome"],
+          correctAnswer: "Paris"
+        },
+        {
+          question: "Which planet is known as the Red Planet?",
+          options: ["Venus", "Mars", "Jupiter", "Saturn"],
+          correctAnswer: "Mars"
+        },
+        {
+          question: "What is the largest mammal?",
+          options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+          correctAnswer: "Blue Whale"
+        }
+    ];
+
+    window.onload = function () {
+      loadQuestions();
+    };
+
+    function addQuestion() {
+      const questionsContainer = document.getElementById('questions-container');
+
+      const questionContainer = document.createElement('div');
+      questionContainer.classList.add('question-container');
+
+      const questionBox = document.createElement('div');
+      questionBox.classList.add('question-box');
+
+      const questionInput = document.createElement('input');
+      questionInput.type = 'text';
+      questionInput.name = `question_${questionCount}`;
+      questionInput.placeholder = 'Enter your question';
+      questionBox.appendChild(questionInput);
+      questionContainer.appendChild(questionBox);
+
+      const choicesBox = document.createElement('div');
+      choicesBox.classList.add('choices-box');
+
+      for (let i = 1; i <= 4; i++) {
+        const choiceInput = document.createElement('input');
+        choiceInput.type = 'text';
+        choiceInput.name = `choice_${questionCount}_${i}`;
+        choiceInput.placeholder = `Choice ${i}`;
+        choicesBox.appendChild(choiceInput);
+      }
+
+      questionContainer.appendChild(choicesBox);
+
+      // Add input field for correct answer
+      const correctAnswerBox = document.createElement('div');
+      correctAnswerBox.classList.add('correct-answer-box');
+
+      const correctAnswerInput = document.createElement('input');
+      correctAnswerInput.type = 'text';
+      correctAnswerInput.name = `correctAnswer_${questionCount}`;
+      correctAnswerInput.placeholder = 'Correct Answer';
+      correctAnswerBox.appendChild(correctAnswerInput);
+      questionContainer.appendChild(correctAnswerBox);
+
+      questionsContainer.appendChild(questionContainer);
+
+      questionCount++;
+    }
+
+    function submitQuestions() {
+        const addedQuestionsList = document.getElementById('added-questions-list');
+  addedQuestionsList.innerHTML = '';
+
+  const existingQuizData = localStorage.getItem('quizData');
+
+  questionArray = [];
+  optionsArray = [];
+  correctAnswerArray = [];
+
+  const questionContainers = document.querySelectorAll('.question-container');
+
+  let isValid = true;
+
+  questionContainers.forEach((container) => {
+    const questionInput = container.querySelector('input[name^="question_"]');
+    const questionValue = questionInput.value.trim();
+
+    if (questionValue === '') {
+      isValid = false;
+      alert('Please enter a question for all added questions.');
+      return;
+    }
+
+    questionArray.push(questionValue);
+
+    const choiceInputs = container.querySelectorAll('input[name^="choice_"]');
+    const choices = [];
+    choiceInputs.forEach((choiceInput) => {
+      const choice = choiceInput.value.trim();
+      if (choice !== '') {
+        choices.push(choice);
+      } else {
+        isValid = false;
+        alert('Please enter all choices for each question.');
+        return;
+      }
+    });
+    optionsArray.push(choices);
+    const correctAnswerInput = container.querySelector('input[name^="correctAnswer_"]');
+    const correctAnswerValue = correctAnswerInput.value.trim();
+
+    if (correctAnswerValue === '') {
+      isValid = false;
+      alert('Please enter a correct answer for all added questions.');
+      return;
+    }
+
+    correctAnswerArray.push(correctAnswerValue);
+  });
+
+  if (!isValid) {
+    return; 
+  }
+
+      // Save questions, choices, and correct answers to local storage
+      localStorage.setItem('questionArray', JSON.stringify(questionArray));
+      localStorage.setItem('optionsArray', JSON.stringify(optionsArray));
+      localStorage.setItem('correctAnswerArray', JSON.stringify(correctAnswerArray));
+
+      // Append new questions to quizData
+      const newQuestions = questionArray.map((question, index) => {
+        return {
+          question: question,
+          options: optionsArray[index],
+          correctAnswer: correctAnswerArray[index]
+        };
+      });
+      quizData = [...quizData, ...newQuestions];
+
+      // Save updated quizData to local storage
+      localStorage.setItem('quizData', JSON.stringify(quizData));
+
+      // Display added questions with choices and correct answers
+      loadQuestions();
+
+      // Check if data is updated
+      const isUpdated = isDataUpdated(existingQuizData, quizData);
+      console.log('Is data updated:', isUpdated);
+    }
+
+    function isDataUpdated(existingData, newData) {
+      // Compare the JSON strings of existing and new data
+      return JSON.stringify(existingData) !== JSON.stringify(newData);
+    }
+
+    function loadQuestions() {
+      const addedQuestionsList = document.getElementById('added-questions-list');
+      addedQuestionsList.innerHTML = '';
+
+      const storedQuestionArray = localStorage.getItem('questionArray');
+      const storedOptionsArray = localStorage.getItem('optionsArray');
+      const storedCorrectAnswerArray = localStorage.getItem('correctAnswerArray');
+
+      if (storedQuestionArray && storedOptionsArray && storedCorrectAnswerArray) {
+        questionArray = JSON.parse(storedQuestionArray);
+        optionsArray = JSON.parse(storedOptionsArray);
+        correctAnswerArray = JSON.parse(storedCorrectAnswerArray);
+
+        questionArray.forEach((question, index) => {
+          const listItem = document.createElement('li');
+          listItem.innerHTML = `<div class="question-box"><strong>Question ${index + 1}:</strong> ${question}</div>
+                                <div class="choices-box"><strong>Choices:</strong> ${optionsArray[index].join(', ')}</div>
+                                <div class="correct-answer-box"><strong>Correct Answer:</strong> ${correctAnswerArray[index]}</div>`;
+          addedQuestionsList.appendChild(listItem);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

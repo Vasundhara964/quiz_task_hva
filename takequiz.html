@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link  href="takequiz.css" rel="stylesheet">
+  <style>
+   
+  </style>
+  <title>Quiz App</title>
+</head>
+<body>
+  <header>
+    <h1 class="heading" onclick="nextpage3()">GK Quiz</h1>
+</header>
+<div class="quiz-container">
+  <div id="question-container" class="question"></div>
+  <ul id="options-container" class="options"></ul>
+  <button onclick="previousQuestion()" id="prevButton" >Previous</button>
+  <button onclick="nextQuestion()"  id="nextButton">Next</button>
+  <button onclick="submitQuiz()">Submit</button>
+  <div id="result-statement"></div>
+
+</div>
+
+<script>
+  function nextpage3() {
+      window.location.href = 'quiz.html';
+    }
+      let quizData = JSON.parse(localStorage.getItem('quizData')) ||  [
+    {
+      question: "What is the capital of France?",
+      options: ["Berlin", "Madrid", "Paris", "Rome"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
+      correctAnswer: "Mars"
+    },
+    {
+      question: "What is the largest mammal?",
+      options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+      correctAnswer: "Blue Whale"
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let userAnswers = Array(quizData.length).fill(null);
+
+  function showQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
+    document.getElementById('question-container').innerHTML = currentQuestion.question;
+
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+    currentQuestion.options.forEach((option, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <label>
+          <input type="radio" name="option" value="${option}" onchange="saveAnswer(${index})">
+          ${option}
+        </label>
+      `;
+      optionsContainer.appendChild(li);
+    });
+
+    const radioButtons = document.getElementsByName('option');
+    if (userAnswers[currentQuestionIndex] !== null) {
+      radioButtons[userAnswers[currentQuestionIndex]].checked = true;
+    }
+    // Enable or disable Previous and Next buttons
+    document.getElementById('prevButton').disabled = currentQuestionIndex === 0;
+    document.getElementById('nextButton').disabled = currentQuestionIndex === quizData.length - 1;
+  }
+
+  function saveAnswer(index) {
+    userAnswers[currentQuestionIndex] = index;
+  }
+
+  function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      showQuestion();
+    }
+    previousQuestion.disabled = true;
+
+  }
+
+  function nextQuestion() {
+    if (currentQuestionIndex < quizData.length - 1) {
+      currentQuestionIndex++;
+      showQuestion();
+    }
+  }
+  
+
+  function submitQuiz() {
+    let correctAnswers = 0;
+
+    for (let i = 0; i < quizData.length; i++) {
+      if (userAnswers[i] !== null && quizData[i].options[userAnswers[i]] === quizData[i].correctAnswer) {
+        correctAnswers++;
+      }
+    }
+
+    const totalQuestions = quizData.length;
+    const score = (correctAnswers / totalQuestions) * 100;
+    const resultStatement = document.getElementById('result-statement');
+    resultStatement.innerHTML = `You scored ${score.toFixed(2)}% (${correctAnswers} out of ${totalQuestions} correct answers)`;
+  }
+  // Initial display
+  showQuestion();
+</script>
+
+</body>
+</html>

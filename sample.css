@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dbe0fa;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  background-color: #6c38de;
+  justify-content: left;
+  color: #fff;
+  padding: 1em;
+  border-radius: 0;
+  width:98%;  
+  height:90px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.heading {
+  font-weight: 700;
+}
+
+#question-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 40%;
+ margin-top: 40px;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.question-box {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.choices-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.correct-answer-box {
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: hidden; /* Add this line to clear the float */
+}
+
+.question-container input {
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+.btn-add,
+.btn-submit {
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  font-size: medium;
+  background-color: #6c38de;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+.added-questions {
+  margin-top: 20px;
+}
+
+#added-questions-list li {
+  margin-bottom: 15px;
+}
+
+.choices-box li {
+  float: left; /* Float the list items to create a horizontal layout */
+  width: 48%; /* Set the width to create space for two items per row with a small gap */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  margin-right: 2%; /* Add a small margin between the items */
+}

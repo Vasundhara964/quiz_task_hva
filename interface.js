@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener("DOMContentLoaded", function () {
         displayQuizzes();
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const addQuizDiv = document.getElementById("addQuizDiv");
+        addQuizDiv.addEventListener("click", function() {
+            window.location.href = "create.html";
+        });
+    });
+    
     
     function displayQuizzes() {
         const quizzesContainer = document.getElementById("quizzesContainer");
@@ -16,13 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
             quizDiv.classList.add("quiz");
             quizDiv.innerHTML = `
                 <h1>${quiz.category}</h1>
-                <p><a href="quiz.html?index=${index}">Start -></a></p>
+                <p>Start -></p>
             `;
             quizzesContainer.appendChild(quizDiv);
         });
     }
-   
-function navigateToNewPage() {
-// Change the URL to the desired page
-window.location.href = 'quiz.html';
-} 
+    
